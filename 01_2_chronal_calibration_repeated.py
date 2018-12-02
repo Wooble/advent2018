@@ -14,6 +14,7 @@ def frequency(changes: typing.Iterable[int]) -> int:
             return current_freq
         seen_freqs.add(current_freq)
 
+
 @pytest.mark.parametrize('freq_changes,expected', [
     ([+1, -1], 0),
     ([+3, +3, +4, -2, -4], 10),
