@@ -11,16 +11,19 @@ def frequency(changes: str) -> int:
     return current_freq
 
 
-@pytest.mark.parametrize('freq_changes,expected', [
-    ("+1, +1, +1", 3),
-    ("+1, +1, -2", 0),
-    ("-1, -2, -3", -6),
-    ("+1\n+1\n+1", 3),  # actual input is \n separated
-])
+@pytest.mark.parametrize(
+    "freq_changes,expected",
+    [
+        ("+1, +1, +1", 3),
+        ("+1, +1, -2", 0),
+        ("-1, -2, -3", -6),
+        ("+1\n+1\n+1", 3),  # actual input is \n separated
+    ],
+)
 def test_frequency(freq_changes: str, expected: int):
     assert frequency(freq_changes) == expected
 
 
 if __name__ == "__main__":
-    with open('01_1_input.txt') as f:
+    with open("01_1_input.txt") as f:
         print(frequency(f.read()))

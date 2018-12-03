@@ -15,17 +15,19 @@ def frequency(changes: typing.Iterable[int]) -> int:
         seen_freqs.add(current_freq)
 
 
-@pytest.mark.parametrize('freq_changes,expected', [
-    ([+1, -1], 0),
-    ([+3, +3, +4, -2, -4], 10),
-    ([-6, +3, +8, +5, -6], 5),
-    ([+7, +7, -2, -7, -4], 14),
-
-])
+@pytest.mark.parametrize(
+    "freq_changes,expected",
+    [
+        ([+1, -1], 0),
+        ([+3, +3, +4, -2, -4], 10),
+        ([-6, +3, +8, +5, -6], 5),
+        ([+7, +7, -2, -7, -4], 14),
+    ],
+)
 def test_frequency(freq_changes: str, expected: int):
-        assert frequency(freq_changes) == expected
+    assert frequency(freq_changes) == expected
 
 
 if __name__ == "__main__":
-    with open('01_1_input.txt') as f:
+    with open("01_1_input.txt") as f:
         print(frequency(int(line) for line in f))

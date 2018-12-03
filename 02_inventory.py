@@ -1,6 +1,7 @@
 import collections
 import itertools
 
+
 def checksum(data):
     two = 0
     three = 0
@@ -22,7 +23,7 @@ def common(data):
             if c1 != c2:
                 differences += 1
         if differences == 1:
-            return ''.join(c1 for c1, c2 in zip(*pair) if c1 == c2)
+            return "".join(c1 for c1, c2 in zip(*pair) if c1 == c2)
 
 
 def test_common():
