@@ -23,8 +23,10 @@ TEST_DATA = """[1518-11-01 00:00] Guard #10 begins shift
 @dataclasses.dataclass
 class Guard:
     total_sleep: int = 0
-    hours_slept: collections.Counter = dataclasses.field(default_factory=collections.Counter)
-    
+    hours_slept: collections.Counter = dataclasses.field(
+        default_factory=collections.Counter
+    )
+
 
 def make_guards(data):
     guards = collections.defaultdict(Guard)
@@ -45,14 +47,17 @@ def make_guards(data):
             guard.hours_slept[t] += 1
     return guards
 
+
 def most_freq(data):
-    guards = make_guards(data)        
-    chosen_guard = max(guards.items(), key=lambda item: item[1].hours_slept.most_common(1)[0][1])
+    guards = make_guards(data)
+    chosen_guard = max(
+        guards.items(), key=lambda item: item[1].hours_slept.most_common(1)[0][1]
+    )
     return chosen_guard[0] * chosen_guard[1].hours_slept.most_common(1)[0][0]
 
-    
-def findtime(data):            
-    guards = make_guards(data)        
+
+def findtime(data):
+    guards = make_guards(data)
     chosen_guard = max(guards.items(), key=lambda item: item[1].total_sleep)
     return chosen_guard[0] * chosen_guard[1].hours_slept.most_common(1)[0][0]
 
@@ -63,10 +68,10 @@ def test_findtime():
 
 def test_most_freq():
     assert most_freq(TEST_DATA) == 4455
-    
+
 
 if __name__ == "__main__":
-    with open('04_input.txt') as f:
+    with open("04_input.txt") as f:
         print(findtime(sorted(f)))
         f.seek(0)
         print(most_freq(sorted(f)))
