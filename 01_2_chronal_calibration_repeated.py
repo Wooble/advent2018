@@ -13,6 +13,7 @@ def frequency(changes: typing.Iterable[int]) -> int:
         if current_freq in seen_freqs:
             return current_freq
         seen_freqs.add(current_freq)
+    raise ValueError("no frequency found")
 
 
 @pytest.mark.parametrize(
@@ -24,7 +25,7 @@ def frequency(changes: typing.Iterable[int]) -> int:
         ([+7, +7, -2, -7, -4], 14),
     ],
 )
-def test_frequency(freq_changes: str, expected: int):
+def test_frequency(freq_changes: typing.Iterable[int], expected: int):
     assert frequency(freq_changes) == expected
 
 
