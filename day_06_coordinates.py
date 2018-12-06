@@ -27,7 +27,7 @@ def largest_area(data, bound):
         possibles.discard(mapping[pt])
     for pt in ((x, 0) for x in range(bound)):
         possibles.discard(mapping[pt])
-    for pt in ((x, bound -1) for x in range(bound)):
+    for pt in ((x, bound - 1) for x in range(bound)):
         possibles.discard(mapping[pt])
 
     c = collections.Counter(v for v in mapping.values() if v in possibles)
